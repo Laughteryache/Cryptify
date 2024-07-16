@@ -1,29 +1,32 @@
-from requests import Request, Session
-from requests.exceptions import ConnectionError, Timeout, TooManyRedirects
+from aiohttp import ClientSession
+from src.config import settings
 
-import json
-
-url = 'https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
-params = {
-    'start': '1',
-    'limit': '5000',
-    'convert': 'USD'
-}
-headers = {
-    'Accepts': 'application/json',
-    'X-CMC_PRO_API_KEY': 'eec48b79-70c8-4d08-800f-350750cadd7d'
-}
+base_url = 'https://pro-api.coinmarketcap.com'
 
 
-session = Session()
-session.headers.update(headers)
+class HTTPClient:
+    def __init__(self, base_url: str, api_key: str):
+        self._session = ClientSession(
+            base_url=base_url,
+            headers={
+                'Accepts': 'application/json',
+                'X-CMC_PRO_API_KEY': api_key,
+            }
+        )
 
 
-try:
-    response = session.get(url=url,
-                           params=params)
-    data = json.loads(response.text)
-    print(data)
-except (ConnectionError, Timeout, TooManyRedirects) as e:
-    print(e)
+class CMCHTTPClient(HTTPClient):
+    async def get_listings(self):
+        async with self._session.get('/v1/cryptocurrency/listings/latest?limit=10') as response:
+            result = await response.json()
+            return result['data']
+        
+    async def get_currency(self, currency_id: int):
+        async with self._session.get('/v2/cryptocurrency/quotes/latest',
+                                     params={'id': currency_id}) as response:
+            result = await response.json()
+            return result["data"][str(currency_id)]
 
+
+cmc_client = CMCHTTPClient(base_url=base_url,
+                           api_key=settings.API_KEY)
