@@ -1,6 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+
 .header {
     display: flex;
     justify-content: space-between;
-    padding: 42px 72px;
-    border-bottom: 3px solid #5D5D5D;
+    align-items: center;
+    padding: 21px 72px;
+    border-bottom: 1px solid #5D5D5D;
+}
+
+
+.navMenu {
+    font-family: 'JetBrains Mono', monospace;
+    color: #6D6D6D;
+    display: flex;
+}
+
+
+.navMenu__item {
+    cursor: pointer;
 }

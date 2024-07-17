@@ -3,4 +3,5 @@
 .logo {
     font-family: "Montserrat Subrayada", monospace;
     font-size: 48px;
+    cursor: pointer;
 }

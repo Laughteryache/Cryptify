@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+.card__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 280px;
+  border: 1px solid #D6D6D6;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+
+.card__header {
+  position: relative;
+  height: 50px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  background-color: #F5F5F5;
+  display: flex;
+  font-size: 24px;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.card__image {
+  position: relative;
+  display: flex;
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  align-self: center;
+  justify-self: center;
+}
+
+
+.card__content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-size: 16px;
+}

@@ -1,9 +1,14 @@
 import React from "react";
 
 import Header from "./components/Header";
+import Page from "./components/Page";
 
-function App() {
-  return <Header></Header>;
+
+const App = () => {
+  return (<div>
+            <Header></Header>
+            <Page></Page>
+         </div>);
 }
 
 export default App;
