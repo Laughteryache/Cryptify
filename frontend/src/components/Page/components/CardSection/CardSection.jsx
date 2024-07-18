@@ -7,7 +7,13 @@ import './CardSection.css';
 
 const CardSection = () => {
 
-    return (<Card></Card>)
+    return (<div className='card_section'>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+        <Card></Card>
+    </div>)
 }
 
 export default CardSection;
